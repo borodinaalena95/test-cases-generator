@@ -4,6 +4,10 @@ from llm import generate_test_cases
 
 app = FastAPI()
 
+@app.get("/")
+def root():
+    return {"status": "ok"}
+
 @app.post("/generate-cases")
 async def generate_cases(req: Request):
     data = await req.json()
