@@ -2,9 +2,13 @@ import anthropic
 from anthropic.types import ImageBlockParam, TextBlockParam, MessageParam, Base64ImageSourceParam
 
 from config import CLAUDE_API_KEY
+from config import CLAUDE_URL
 
 def call_claude_api(prompt: str, images: list[str]) -> str:
-    client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
+    if CLAUDE_URL:
+        client = anthropic.Anthropic(base_url=CLAUDE_URL, auth_token=CLAUDE_API_KEY)
+    else:
+        client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
 
     content: list[ImageBlockParam | TextBlockParam] = []
 

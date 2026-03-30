@@ -8,3 +8,4 @@ JIRA_EMAIL = os.getenv("JIRA_EMAIL")
 JIRA_API_TOKEN = os.getenv("JIRA_API_TOKEN")
 
 CLAUDE_API_KEY = os.getenv("CLAUDE_API_KEY")
+CLAUDE_URL = os.getenv("CLAUDE_URL")
