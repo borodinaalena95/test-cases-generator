@@ -2,3 +2,4 @@ python-dotenv
 anthropic
 requests
 uvicorn
+fastapi

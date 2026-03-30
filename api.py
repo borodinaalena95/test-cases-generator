@@ -1,14 +1,14 @@
-from fastapi import FastAPI, Request
+from fastapi import Request, APIRouter
 from jira_client import get_ticket, post_comment
 from llm import generate_test_cases
 
-app = FastAPI()
+router = APIRouter()
 
-@app.get("/")
+@router.get("/")
 def root():
     return {"status": "ok"}
 
-@app.post("/generate-cases")
+@router.post("/generate-cases")
 async def generate_cases(req: Request):
     data = await req.json()
 
