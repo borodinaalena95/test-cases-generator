@@ -6,8 +6,3 @@ if __name__ == "__main__":
     ticket = get_ticket(ticket_id)
     test_cases = generate_test_cases(ticket)
     print(test_cases)
-
-
-
-
-
