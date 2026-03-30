@@ -3,6 +3,16 @@ import base64
 from config import JIRA_URL, JIRA_EMAIL, JIRA_API_TOKEN
 from requests.auth import HTTPBasicAuth
 
+def post_comment(issue_key, text):
+    url = f"{JIRA_URL}/rest/api/3/issue/{issue_key}/comment"
+
+    requests.post(
+        url,
+        auth=HTTPBasicAuth(JIRA_EMAIL, JIRA_API_TOKEN),
+        json={"body": text},
+        headers={"Accept": "application/json"}
+    )
+
 def get_ticket(ticket_id):
     url = f"{JIRA_URL}/rest/api/3/issue/{ticket_id}"
 
