@@ -17,7 +17,9 @@ async def generate_cases(req: Request):
 
     if "/testcases" in comment:
         ticket = get_ticket(issue_key)
+        print(ticket)
         test_cases = generate_test_cases(ticket)
+        print(test_cases)
 
         post_comment(issue_key, test_cases)
 
