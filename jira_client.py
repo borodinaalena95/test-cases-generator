@@ -14,6 +14,10 @@ def post_comment(issue_key, text):
     )
 
 def get_ticket(ticket_id):
+    print("JIRA_URL:", os.getenv("JIRA_URL"))
+    print("JIRA_EMAIL:", os.getenv("JIRA_EMAIL"))
+    print("JIRA_API_TOKEN:", os.getenv("JIRA_API_TOKEN"))
+    
     url = f"{JIRA_URL}/rest/api/3/issue/{ticket_id}"
 
     response = requests.get(
