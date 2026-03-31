@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 
 if not os.getenv('RAILWAY_ENVIRONMENT_ID'):
     load_dotenv()
+    print("using load dotenv")
 
 print("hello" + os.getenv('RAILWAY_ENVIRONMENT_ID'))
 
