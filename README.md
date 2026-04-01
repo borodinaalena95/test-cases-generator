@@ -60,6 +60,10 @@ An AI-powered API that automatically generates test cases from Jira tickets usin
 
 -> the .md attachment will be added to the specified ticket
 
+## Examples
+
+Please find the examples of the ticket description and the generated cases under the `examples/` folder
+
 ## Deployment
 
 This is an API service that needs to be deployed to a publicly accessible server for Jira to send webhooks to it. You can deploy it to platforms like:
