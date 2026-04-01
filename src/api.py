@@ -1,7 +1,8 @@
 from fastapi import Request, APIRouter
-from jira_client import get_ticket, upload_attachment
-from files_processor import save_markdown
-from llm import generate_test_cases
+
+from src.jira_client import get_ticket, upload_attachment
+from src.files_processor import save_markdown
+from src.llm import generate_test_cases
 
 router = APIRouter()
 

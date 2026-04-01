@@ -1,6 +1,6 @@
 # Test Cases Generator
 
-A FastAPI-based service that automatically generates test cases from Jira tickets using Claude AI. When triggered via a Jira comment, it analyzes the ticket content and attached images, generates structured test cases, and uploads them back to the ticket as a markdown attachment.
+An AI-powered API that automatically generates test cases from Jira tickets using Claude AI. When triggered via a Jira comment, it analyzes the ticket content and attached images, generates structured test cases, and uploads them back to the ticket as a markdown attachment.
 
 ## How It Works
 
@@ -19,6 +19,62 @@ A FastAPI-based service that automatically generates test cases from Jira ticket
 - A Claude API key
 
 ### Setup
+<<<<<<< HEAD
+
+1. Clone the repository
+
+2. Create a virtual environment and install dependencies:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
+
+3. Copy the environment example file and fill in your values:
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Edit `.env` with your actual credentials:
+   - `JIRA_URL` - Your Jira instance URL (e.g., `https://your-domain.atlassian.net`)
+   - `JIRA_EMAIL` - Your Jira account email
+   - `JIRA_API_TOKEN` - Your Jira API token ([Generate one here](https://id.atlassian.com/manage-profile/security/api-tokens))
+   - `CLAUDE_API_KEY` - Your Claude API key
+
+5. Run the server:
+   ```bash
+   uvicorn main:app --reload --port 8000
+   ```
+
+   You should see:
+   ```
+   Uvicorn running on http://127.0.0.1:8000
+   ```
+   
+6. Test the API
+```bash
+ curl -X POST http://localhost:8000/generate-cases -H "Content-Type: application/json" -d '{
+  "comment": {"body": "/testcases"},
+  "issue": {"key": "{{your-jira-ticket-key}}"}
+}'
+```
+
+-> the .md attachment will be added to the specified ticket
+
+## Examples
+
+Please find the examples of the ticket description and the generated cases under the `examples/` folder
+
+## Deployment
+
+This is an API service that needs to be deployed to a publicly accessible server for Jira to send webhooks to it. You can deploy it to platforms like:
+
+- [Railway](https://railway.app)
+- Heroku
+- AWS
+- Any server with a public URL
+
+=======
 
 1. Clone the repository
 
@@ -59,6 +115,7 @@ This is an API service that needs to be deployed to a publicly accessible server
 - AWS
 - Any server with a public URL
 
+>>>>>>> d9ce37f13e116c35c40b0ccd5cee13c46f46ef9b
 Make sure to set the environment variables in your deployment platform.
 
 ## Jira Automation Setup

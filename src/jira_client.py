@@ -1,6 +1,6 @@
 import requests
 import base64
-from config import JIRA_URL, JIRA_EMAIL, JIRA_API_TOKEN
+from src.config import JIRA_URL, JIRA_EMAIL, JIRA_API_TOKEN
 from requests.auth import HTTPBasicAuth
 
 def upload_attachment(issue_key, file_path):
@@ -15,9 +15,6 @@ def upload_attachment(issue_key, file_path):
                 "X-Atlassian-Token": "no-check"
             }
         )
-
-    print("UPLOAD STATUS:", response.status_code)
-    print("UPLOAD RESPONSE:", response.text)
 
     response.raise_for_status()
 
