@@ -49,6 +49,16 @@ An AI-powered API that automatically generates test cases from Jira tickets usin
    ```
    Uvicorn running on http://127.0.0.1:8000
    ```
+   
+6. Test the API
+```bash
+ curl -X POST http://localhost:8000/generate-cases -H "Content-Type: application/json" -d '{
+  "comment": {"body": "/testcases"},
+  "issue": {"key": "{{your-jira-ticket-key}}"}
+}'
+```
+
+-> the .md attachment will be added to the specified ticket
 
 ## Deployment
 
