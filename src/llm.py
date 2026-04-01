@@ -1,5 +1,5 @@
-from config import CLAUDE_API_KEY
-from claude_client import call_claude_api
+from src.config import CLAUDE_API_KEY
+from src.claude_client import call_claude_api
 
 
 def build_prompt(ticket):

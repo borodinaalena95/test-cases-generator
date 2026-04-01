@@ -1,6 +1,7 @@
 from fastapi import Request, APIRouter
-from jira_client import get_ticket, post_comment
-from llm import generate_test_cases
+from src.jira_client import get_ticket, upload_attachment
+from src.files_processor import save_markdown
+from src.llm import generate_test_cases
 
 router = APIRouter()
 
@@ -19,6 +20,7 @@ async def generate_cases(req: Request):
         ticket = get_ticket(issue_key)
         test_cases = generate_test_cases(ticket)
 
-        post_comment(issue_key, test_cases)
+        file_path = save_markdown(test_cases)
+        upload_attachment(issue_key, file_path)
 
     return {"status": "ok"}

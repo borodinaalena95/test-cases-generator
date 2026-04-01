@@ -1,20 +1,20 @@
 import requests
 import base64
-from config import JIRA_URL, JIRA_EMAIL, JIRA_API_TOKEN
+from src.config import JIRA_URL, JIRA_EMAIL, JIRA_API_TOKEN
 from requests.auth import HTTPBasicAuth
 
-def post_comment(issue_key, text):
-    url = f"{JIRA_URL}/rest/api/3/issue/{issue_key}/comment"
+def upload_attachment(issue_key, file_path):
+    url = f"{JIRA_URL}/rest/api/3/issue/{issue_key}/attachments"
 
-    response = requests.post(
-        url,
-        auth=HTTPBasicAuth(JIRA_EMAIL, JIRA_API_TOKEN),
-        json={"body": text},
-        headers={"Accept": "application/json"}
-    )
-
-    print("POST STATUS:", response.status_code)
-    print("POST RESPONSE:", response.text)
+    with open(file_path, "rb") as f:
+        response = requests.post(
+            url,
+            auth=HTTPBasicAuth(JIRA_EMAIL, JIRA_API_TOKEN),
+            files={"file": (file_path, f, "text/markdown")},
+            headers={
+                "X-Atlassian-Token": "no-check"
+            }
+        )
 
     response.raise_for_status()
 

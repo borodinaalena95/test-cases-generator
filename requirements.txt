@@ -3,3 +3,5 @@ anthropic
 requests
 uvicorn
 fastapi
+pytest
+httpx
